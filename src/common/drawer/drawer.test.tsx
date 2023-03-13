@@ -1,4 +1,6 @@
 import {render, screen, fireEvent} from '@testing-library/react';
+import '@testing-library/jest-dom';
+
 import CustomDrawer from './drawer';
 
 describe('CustomDrawer', () => {
@@ -14,7 +16,8 @@ describe('CustomDrawer', () => {
 
   it('should render the icon and children', () => {
     render(<CustomDrawer {...defaultProps} />);
-    const icon = screen.getByRole('button', {name: /menuopenoutlinedicon/i});
+
+    const icon = screen.getByTestId('open-btn');
     const child = screen.getByText('test');
     expect(icon).toBeInTheDocument();
     expect(child).toBeInTheDocument();
@@ -22,14 +25,14 @@ describe('CustomDrawer', () => {
 
   it('should call onClose when the close icon is clicked', () => {
     render(<CustomDrawer {...defaultProps} />);
-    const closeIcon = screen.getAllByRole('button', {name: /menuopenoutlinedicon/i})[1];
+    const closeIcon = screen.getByTestId('close-btn');
     fireEvent.click(closeIcon);
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
   it('should call onOpen when the menu icon is clicked', () => {
     render(<CustomDrawer {...defaultProps} />);
-    const menuIcon = screen.getByRole('button', {name: /menuopenoutlinedicon/i});
+    const menuIcon = screen.getByTestId('open-btn');
     fireEvent.click(menuIcon);
     expect(onOpen).toHaveBeenCalledTimes(1);
   });

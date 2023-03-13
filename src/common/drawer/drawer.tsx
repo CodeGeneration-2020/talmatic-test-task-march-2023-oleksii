@@ -19,11 +19,17 @@ const CustomDrawer = ({children, isOpen, onClose = () => null, onOpen = () => nu
   const iconSX = {cursor: 'pointer', width: 40, height: 40};
   return (
     <>
-      <MenuOpenOutlinedIcon className={styles.icon} sx={iconSX} onClick={onOpen} />
+      <MenuOpenOutlinedIcon
+        className={styles.icon}
+        sx={iconSX}
+        data-testid="open-btn"
+        onClick={onOpen}
+        aria-label="open menu"
+      />
       <Drawer sx={{width: 400}} anchor={DEFAULT_ANCHOR} open={isOpen} onClose={onClose}>
         <div className={styles.wrapper}>
           <div>
-            <MenuOpenOutlinedIcon sx={iconSX} onClick={onClose} />
+            <MenuOpenOutlinedIcon data-testid="close-btn" sx={iconSX} onClick={onClose} aria-label="open menu" />
           </div>
           <div className={styles.list}>{children}</div>
         </div>
