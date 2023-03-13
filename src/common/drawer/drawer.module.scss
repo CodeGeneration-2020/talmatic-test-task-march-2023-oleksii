@@ -1,0 +1,41 @@
+@import '../../style/variables';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 5px;
+
+  & > div:nth-child(1) {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .list {
+    ul {
+      display: flex;
+      flex-direction: column;
+
+      text-decoration: none;
+      gap: 15px;
+
+      li {
+        width: 100%;
+        padding: 15px;
+
+        cursor: pointer;
+
+        transition: all 0.3 ease-in-out;
+        &:hover {
+          background-color: $gray-200;
+        }
+      }
+    }
+  }
+}
+.icon {
+  position: absolute;
+  left: 0;
+  top: 5px;
+}
